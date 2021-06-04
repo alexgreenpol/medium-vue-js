@@ -91,7 +91,7 @@ export default {
         .then(user => {
           this.disabled = false;
           console.log('Successfully register user', user);
-          this.$router.push({name: 'home'});
+          this.$router.push({name: 'globalFeed'});
         })
         .catch(() => {
           this.disabled = false;

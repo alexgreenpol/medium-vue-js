@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-light">
     <div class="container">
-      <router-link class="navbar-brand ng-binding" :to="{name: 'home'}"
+      <router-link class="navbar-brand ng-binding" :to="{name: 'globalFeed'}"
         >medium</router-link
       >
 
@@ -12,7 +12,7 @@
               class="nav-link"
               active-class="active"
               exact
-              :to="{name: 'home'}"
+              :to="{name: 'globalFeed'}"
             >
               Home
             </router-link>
@@ -47,7 +47,7 @@
               class="nav-link"
               active-class="active"
               exact
-              :to="{name: 'home'}"
+              :to="{name: 'globalFeed'}"
             >
               Home
             </router-link>
@@ -95,7 +95,8 @@
 </template>
 
 <script>
-import {getterTypes} from '@/store/modules/auth';
+import {getterTypes, actionTypes} from '@/store/modules/auth';
+
 export default {
   name: 'MdNavbar',
   computed: {
@@ -108,6 +109,9 @@ export default {
     isAnonymous() {
       return this.$store.getters[getterTypes.isAnonymous];
     }
+  },
+  mounted() {
+    this.$store.dispatch(actionTypes.getCurrentUser);
   }
 };
 </script>
